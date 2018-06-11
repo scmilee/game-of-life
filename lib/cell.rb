@@ -10,5 +10,9 @@ class Cell
   def is_alive?
     alive
   end
+
+  def kill
+    @alive = false
+  end
   
 end
