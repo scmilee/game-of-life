@@ -16,8 +16,8 @@ let(:cell){ Cell.new}
     expect(cell.is_alive?).to eq(false)
   end
 
-  xit 'has neighbors, which is initially an empty array' do
-
+  it 'has neighbors, which is initially an empty array' do
+    expect(cell.has_neighbors?).to be_truthy
   end
 
   xit 'has a tick method' do
