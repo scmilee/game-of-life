@@ -1,7 +1,7 @@
 # TODO
 
 class Cell
-    attr_accessor :alive, :neighbors
+    attr_accessor :alive, :neighbors, :age
 
   def initialize()
     @alive= true
@@ -18,6 +18,13 @@ class Cell
 
   def kill
     @alive = false
+  end
+
+  def tick
+    if neighbors.length < 2
+      kill
+    end
+    
   end
 
   

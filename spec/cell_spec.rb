@@ -22,13 +22,16 @@ let(:cell){ Cell.new}
 
   it 'has a tick method' do
     cell.tick
-    expect(cell.age).to eq(1)
+    expect(cell.is_alive?).to be_falsey
   end
 
   describe 'after a tick' do
 
-    xit 'a live cell with fewer than two live neighbors dies' do
-
+    it 'a live cell with fewer than two live neighbors dies' do
+      neighborCell = Cell.new
+      cell.neighbors << neighborCell
+      cell.tick
+      expect(cell.is_alive?).to be_falsey
     end
 
     xit 'a dead cell with fewer than two live neighbors stays dead' do
