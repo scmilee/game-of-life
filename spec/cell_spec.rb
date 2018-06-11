@@ -14,7 +14,7 @@ describe "A cell" do
 
   end
 
-  xit 'has neighbors, which is an array of other cells or an empty array' do
+  xit 'has neighbors, which is an array of three to eight other cells' do
 
   end
 
