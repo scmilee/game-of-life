@@ -8,7 +8,7 @@ let(:cell){ Cell.new}
   end
 
   it 'is initially alive' do
-    expect(cell.is_alive?).to eq(true)
+    expect(cell.is_alive?).to be_truthy
   end
 
   it 'can die' do
@@ -17,11 +17,12 @@ let(:cell){ Cell.new}
   end
 
   it 'has neighbors, which is initially an empty array' do
-    expect(cell.has_neighbors?).to be_truthy
+    expect(cell.has_neighbors?).to be_falsey
   end
 
-  xit 'has a tick method' do
-
+  it 'has a tick method' do
+    cell.tick
+    expect(cell.age).to eq(1)
   end
 
   describe 'after a tick' do
