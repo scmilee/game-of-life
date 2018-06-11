@@ -3,9 +3,9 @@
 class Cell
     attr_accessor :alive, :neighbors, :age
 
-  def initialize()
-    @alive= true
-    @neighbors = []
+  def initialize(neighbors)
+    @alive = true
+    @neighbors = neighbors
   end
 
   def is_alive?
@@ -21,7 +21,9 @@ class Cell
   end
 
   def tick
-    if neighbors.length < 2
+    if neighbors.length == 3
+      @alive = true 
+    else
       kill
     end
     

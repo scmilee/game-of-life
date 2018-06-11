@@ -1,7 +1,11 @@
 require_relative '../lib/cell'
 
 describe "A cell" do
-let(:cell){ Cell.new}
+neighbors = []
+let(:cell){ Cell.new(neighbors)}
+
+
+
   
   it 'exists' do
     cell
@@ -22,23 +26,27 @@ let(:cell){ Cell.new}
 
   it 'has a tick method' do
     cell.tick
-    expect(cell.is_alive?).to be_falsey
   end
 
   describe 'after a tick' do
 
     it 'a live cell with fewer than two live neighbors dies' do
-      neighborCell = Cell.new
-      cell.neighbors << neighborCell
-      cell.tick
-      expect(cell.is_alive?).to be_falsey
+      cell1 = Cell.new([cell])
+      cell1.tick
+      expect(cell1.is_alive?).to be_falsey
     end
 
-    xit 'a dead cell with fewer than two live neighbors stays dead' do
-
+    it 'a dead cell with fewer than two live neighbors stays dead' do
+      cell1 = Cell.new([cell])
+      cell1.kill
+      cell1.tick
+      expect(cell1.is_alive?).to be_falsey
     end
 
-    # TODO: Cell rules
+    it 'a dead cell with exactly 3 neighbors becomes alive' do
+      cell3 = Cell.new([ cell, cell, cell ])
+      expect(cell3.is_alive?).to be_truthy
+    end 
 
   end
 
