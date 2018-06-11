@@ -8,11 +8,12 @@ let(:cell){ Cell.new}
   end
 
   it 'is initially alive' do
-    cell.is_alive?
+    expect(cell.is_alive?).to eq(true)
   end
 
-  xit 'can die' do
-
+  it 'can die' do
+    cell.kill
+    expect(cell.is_alive?).to eq(false)
   end
 
   xit 'has neighbors, which is initially an empty array' do
